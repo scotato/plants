@@ -12,7 +12,7 @@ const rebootStyles = reboot({
   // fontWeightBase: 400,
   // lineHeightBase: 1.5,
   // bodyColor: '#212529',
-  // bodyBg: '#fff',
+  bodyBg: 'rgba(0, 0, 0, 0.95)',
   // headingsMarginBottom: '0.5rem',
   // paragraphMarginBottom: '1rem',
   // labelMarginBottom: '0.5rem',

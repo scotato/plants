@@ -41,7 +41,6 @@ const Timelapse = props => {
   const [playing, setPlaying] = useState(false)
   const timelapse = props.images
   const isLast = activeImageIndex === timelapse.length - 1
-  console.log(activeImageIndex)
   const image = timelapse[activeImageIndex].node
   const date = new Date().setTime(image.name)
 
@@ -49,7 +48,7 @@ const Timelapse = props => {
     const timer = setInterval(() => {
       playing && !isLast && setActiveImageIndex(activeImageIndex + 1)
       isLast && setPlaying(false)
-    }, 100)
+    }, 500)
     return () => clearInterval(timer)
   })
 
