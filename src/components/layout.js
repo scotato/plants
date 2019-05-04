@@ -1,53 +1,52 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import { createGlobalStyle } from 'styled-components'
+import reboot from 'styled-reboot'
 
-import Header from "./header"
-import "./layout.css"
+const rebootStyles = reboot({
+  // black: '#000',
+  // fontFamilyBase:
+  //   '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+  // fontFamilyMonospace:
+  //   'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  // fontSizeBase: '1rem',
+  // fontWeightBase: 400,
+  // lineHeightBase: 1.5,
+  // bodyColor: '#212529',
+  // bodyBg: '#fff',
+  // headingsMarginBottom: '0.5rem',
+  // paragraphMarginBottom: '1rem',
+  // labelMarginBottom: '0.5rem',
+  // dtFontWeight: 700,
+  // linkColor: '#007bff',
+  // linkDecoration: 'none',
+  // linkHoverColor: '#0056b3',
+  // linkHoverDecoration: 'underline',
+  // tableCellPadding: '0.75rem',
+  // textMuted: '#6c757d'
+});
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </>
-    )}
-  />
+const GlobalStyle = createGlobalStyle`
+  ${rebootStyles}
+
+  html,
+  body,
+  #___gatsby,
+  #___gatsby > div {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  #___gatsby > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+`
+
+export default ({ children }) => (
+  <>
+    <GlobalStyle />
+    {children}
+  </>
 )
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
